@@ -30,7 +30,7 @@ challenges, as well as other features.
 Clone this repo then run the command `./tools/build.sh` from the project's
 root folder.
 
-## How to Run The interpreter
+## How to Run The Interpreter
 
 After building the interpreter, run `cd build && java jlox.Lox`.
 
