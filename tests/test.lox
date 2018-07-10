@@ -1,0 +1,137 @@
+// single line comment
+/*
+	multi-line comment
+	/* nested comments */
+*/
+
+// variable declaration
+var a = 10;
+
+// if statements
+if (a < 10) {
+	println("a is smaller than 10");
+} else if (a > 10) {
+	println("a is larger than 10");
+} else {
+	println("a is equal to 10");
+}
+
+// for and while loops
+for (var x = 1; x <= 10; x += 1) {
+	println(x);
+}
+
+while (true) {
+	// string concatenation.
+	println("Hello agent " + 72 + "!");
+	println("Hello agent" " 72!");
+	break; // continue is not supported.
+}
+
+// functions, anonymous functions, and arrow style functions
+
+function y(x) {
+	return 2 * x + 4;
+}
+
+var b = function() {
+	println("Hello");
+};
+
+b();
+
+// Immediately Invoked Anonymous Function
+function() {
+	println("IIAF");
+}();
+
+// Arrow functions
+var welcome = function () => "Hello, World!";
+println(welcome());
+
+// IIAF with arrow functions.
+// Note: paranthesis around anonymous function are necessary,
+// 	otherwise it will be interpreted as:
+// 		print(
+// 			function () => ( "Hello, World"() )
+// 		);
+
+print((function () => "Hello, World!")());
+
+// classes
+
+class Mammal {
+	function __init__() {
+		this.call = function() {
+			return "Mammal";
+		};
+	}
+
+	function walk() {
+		println("Walking");
+	}
+	
+	static function scream() {
+		println("MAMMAL!");
+	}
+}
+
+Mammal.scream();
+
+class Human inherits Mammal {
+	function __init__() {
+		super.__init__();
+	}
+
+	function walk() {
+		println("Human");
+		super.walk();
+	}
+}
+
+var obj = Human();
+
+obj.walk();
+obj.scream();
+println(obj.call());
+
+// closures
+
+var q = 10;
+
+{
+	function w() {
+		println(q);
+	}
+
+	w();
+	var q = 12;
+	w(); // this call prints 10 too
+}
+
+{
+	function w() {
+		println(q);
+	}
+
+	w();
+	q = 12; // change the global variable q
+	w(); // this one prints 12
+}
+
+var t1 = clock(); 
+
+while (true) {
+	print("Give me a name: ");
+	var a = input();
+	if (a == "lox") { // :P
+		println("Coolest name ever! I love it.");
+		break;
+	} else {
+		println("I don't like it. Think of something else.");
+	}
+}
+
+var t2 = clock();
+
+println("It took you " + (t2 - t1) + " to think of a name!");
